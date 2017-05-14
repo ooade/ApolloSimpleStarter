@@ -1,0 +1,6 @@
+html, body {
+	background: #EEE;
+	color: #444;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}

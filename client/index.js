@@ -1,6 +1,6 @@
-import React from 'react';
 import { render } from 'react-dom';
 
-const App = () => <div> Hello World! </div>;
+import './index.css';
+import Todo from './components/Todo';
 
-render(<App />, document.querySelector('.entry'));
+render(<Todo />, document.querySelector('.entry'));

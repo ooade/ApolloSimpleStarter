@@ -16,8 +16,7 @@
     "mongoose": "^4.9.8",
     "react": "^15.5.4",
     "react-apollo": "^1.2.0",
-    "react-dom": "^15.5.4",
-    "react-router": "^4.1.1"
+    "react-dom": "^15.5.4"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
