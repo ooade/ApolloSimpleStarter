@@ -1,2 +1,5 @@
-<h3> Apollo Simple Starter </h3>
-<img src="http://i.imgur.com/BSYBn1L.gifv" />
+<h1> Apollo Simple Starter </h1>
+
+<p align="center">
+	<img align="center" src="http://i.imgur.com/BSYBn1L.gif" />
+</p>
