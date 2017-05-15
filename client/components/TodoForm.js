@@ -1,4 +1,5 @@
 import { gql, graphql } from 'react-apollo';
+import { todoListQuery } from './Todo';
 
 class TodoForm extends React.PureComponent {
 	constructor(props) {
@@ -6,7 +7,6 @@ class TodoForm extends React.PureComponent {
 
 		this.onTodoInput = this.onTodoInput.bind(this);
 		this.onFormSubmit = this.onFormSubmit.bind(this);
-
 		this.state = { todo: '' };
 	}
 
@@ -16,14 +16,16 @@ class TodoForm extends React.PureComponent {
 		// Update the state
 		this.props.addTodo(this.state.todo);
 
+		this.setState({ todo: '' });
+
 		// Update DB
-		this.props
-			.mutate({
-				variables: {
-					todo: this.state.todo
-				}
-			})
-			.then(() => this.setState({ todo: '' }));
+		this.props.mutate({
+			variables: {
+				todo: this.state.todo
+			},
+			// refetch todoList to get our mongo id attached
+			refetchQueries: [{ query: todoListQuery }]
+		});
 	}
 
 	onTodoInput(e) {

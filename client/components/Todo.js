@@ -8,6 +8,8 @@ class Todo extends React.PureComponent {
 	constructor(props) {
 		super(props);
 
+		this.addTodo = this.addTodo.bind(this);
+		this.removeTodo = this.removeTodo.bind(this);
 		this.state = { todos: [] };
 	}
 
@@ -50,16 +52,12 @@ class Todo extends React.PureComponent {
 
 		return (
 			<div className="todo">
-				<TodoForm addTodo={this.addTodo.bind(this)} />
+				<TodoForm addTodo={this.addTodo} />
 				{todos.length === 0 &&
 					<div className="todo__list-none"> Todo.length === 0 </div>}
 				<ul className="todo__list">
 					{todos.map(todo => (
-						<TodoItem
-							removeTodo={this.removeTodo.bind(this)}
-							key={todo.id}
-							todo={todo}
-						/>
+						<TodoItem removeTodo={this.removeTodo} key={todo.id} todo={todo} />
 					))}
 				</ul>
 			</div>
@@ -67,7 +65,7 @@ class Todo extends React.PureComponent {
 	}
 }
 
-const todoListQuery = gql`
+export const todoListQuery = gql`
 	query todos {
 		todos {
 			id
@@ -84,6 +82,6 @@ const removeTodoMutation = gql`
 	}
 `;
 
-export default withApollo(
-	compose(graphql(todoListQuery), graphql(removeTodoMutation))(Todo)
+export default compose(graphql(todoListQuery), graphql(removeTodoMutation))(
+	Todo
 );
