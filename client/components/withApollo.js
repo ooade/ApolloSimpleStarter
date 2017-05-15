@@ -8,7 +8,7 @@ function createClient() {
 	return new ApolloClient({
 		dataIdFromObject: result => result.id || null,
 		networkInterface: createNetworkInterface({
-			uri: 'http://localhost:8080/graphql'
+			uri: '/graphql'
 		})
 	});
 }

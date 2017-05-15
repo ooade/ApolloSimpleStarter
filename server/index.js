@@ -5,10 +5,6 @@ const mongoose = require('mongoose');
 const { createServer } = require('http');
 const { graphqlExpress, graphiqlExpress } = require('graphql-server-express');
 
-const webpack = require('webpack');
-const WebpackConfig = require('../webpack.config');
-const WebpackDevMiddleware = require('webpack-dev-middleware');
-
 const PORT = process.env.PORT || 8080;
 
 // Connect MongoDB
@@ -37,7 +33,11 @@ app.use(
 );
 
 // Use webpack to bundle our client
-app.use(WebpackDevMiddleware(webpack(WebpackConfig)));
+if (process.env.NODE_ENV !== 'production') {
+	require('./server.dev')(app);
+} else {
+	require('./server.prod')(app);
+}
 
 const server = createServer(app);
 
