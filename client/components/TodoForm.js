@@ -1,5 +1,4 @@
 import { gql, graphql } from 'react-apollo';
-import { todoListQuery } from './Todo';
 
 class TodoForm extends React.PureComponent {
 	constructor(props) {
@@ -14,12 +13,15 @@ class TodoForm extends React.PureComponent {
 	onFormSubmit(e) {
 		e.preventDefault();
 
+		// Update the state
+		this.props.addTodo(this.state.todo);
+
+		// Update DB
 		this.props
 			.mutate({
 				variables: {
 					todo: this.state.todo
-				},
-				refetchQueries: [{ query: todoListQuery }]
+				}
 			})
 			.then(() => this.setState({ todo: '' }));
 	}

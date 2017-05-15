@@ -47,8 +47,14 @@ form > button {
 	display: flex;
 	flex-direction: column-reverse;
 	align-items: flex-start;
-	margin-top: 0.2rem;
 	box-sizing: border-box;
+}
+
+.todo__list-none {
+	text-align: center;
+	padding: 2rem;
+	color: rgba(245, 20, 30, .7);
+	font-size: 20px;
 }
 
 .todo__list-item {
