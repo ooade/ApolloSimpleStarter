@@ -33,7 +33,7 @@ const typeDefs = `
 	}
 
 	type Mutation {
-		addTodo(id: ID!, todo: String!): Todo
+		addTodo(todo: String!): Todo
 		removeTodo(id: ID!): Todo
 	}
 

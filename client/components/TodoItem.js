@@ -1,1 +1,7 @@
-export default ({ todo }) => <li>{todo.todo}</li>;
+export default ({ todo, removeTodo }) => (
+	<li className="todo__list-item">
+		<button onClick={() => removeTodo(todo)}>x</button>
+		{' '}
+		{todo.todo}
+	</li>
+);

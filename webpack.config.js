@@ -24,7 +24,8 @@ module.exports = {
 	},
 	plugins: [
 		new webpack.ProvidePlugin({
-			React: 'react'
+			React: 'react',
+			fetch: 'isomorphic-fetch'
 		}),
 		new HtmlWebpackPlugin({
 			template: 'client/index.html'

@@ -13,6 +13,7 @@
     "express": "^4.15.2",
     "graphql-server-express": "^0.7.2",
     "graphql-tools": "^0.11.0",
+    "isomorphic-fetch": "^2.2.1",
     "mongoose": "^4.9.8",
     "react": "^15.5.4",
     "react-apollo": "^1.2.0",

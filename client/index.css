@@ -1,6 +1,90 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+button {
+	cursor: pointer;
+}
+
 html, body {
 	background: #EEE;
 	color: #444;
+	font-family: 'Proxima Nova', 'Lato', sans-serif;
+	font-size: 14px;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+
+.todo {
+	margin: auto;
+	margin-top: 150px;
+	background-color: #fff;
+	width: 25rem;
+	max-width: 100%;
+	box-shadow: 3px 3px 6px #ccc;
+}
+
+form > input, form > button {
+	height: 3.5rem;
+	outline: none;
+	border: none;
+}
+
+form > input {
+	width: 70%;
+	border-bottom: 1px dotted #ddd;
+	padding: 0 1rem;
+}
+
+form > button {
+	width: 30%;
+	background-color: royalblue;
+	color: #fff;
+}
+
+.todo__list {
+	display: flex;
+	flex-direction: column-reverse;
+	align-items: flex-start;
+	margin-top: 0.2rem;
+	box-sizing: border-box;
+}
+
+.todo__list-item {
+	list-style: none;
+	padding: 1.4rem;
+	width: 100%;
+	border-bottom: 1px solid #ddd;
+	box-sizing: border-box;
+}
+
+.todo__list-item:first-child {
+	border-bottom: none;
+}
+
+.todo__list-item > button {
+	background-color: rgba(245, 20, 30, .7);
+	box-shadow: 3px 3px 6px #ccc;
+	outline: none;
+	border: none;
+	color: #fff;
+	border-radius: 100%;
+	height: 3rem;
+	width: 3rem;
+	margin-right: .45rem;
+}
+
+.todo__list-item > button:hover {
+	background-color: rgba(245, 20, 30, .5);
+	transition-duration: .5s;
+}
+
+footer {
+	margin-top: 1.5rem;
+	text-align: center;
+}
+
+footer p {
+	margin-top: 1rem;
 }
