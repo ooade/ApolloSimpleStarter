@@ -6,9 +6,10 @@ const { createServer } = require('http');
 const { graphqlExpress, graphiqlExpress } = require('graphql-server-express');
 
 const PORT = process.env.PORT || 8080;
+const MONGO_URI = 'mongodb://heroku_x4xnglm7:em5c6br38p6molbe25j3qfqod6@ds011880.mlab.com:11880/heroku_x4xnglm7';
 
 // Connect MongoDB
-mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/ApolloSS');
+mongoose.connect(process.env.MONGO_URI || MONGO_URI);
 mongoose.Promise = global.Promise;
 
 // Grab our schema
