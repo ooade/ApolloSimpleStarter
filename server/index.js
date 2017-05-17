@@ -2,7 +2,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const { createServer } = require('http');
 const { graphqlExpress, graphiqlExpress } = require('graphql-server-express');
 
 const PORT = process.env.PORT || 8080;
@@ -33,13 +32,15 @@ app.use(
 	})
 );
 
-// Use webpack to bundle our client
+const devInit = require('./init.dev');
+const prodInit = require('./init.prod');
+
 if (process.env.NODE_ENV !== 'production') {
-	require('./server.dev')(app);
+	// Build with webpack at run time
+	devInit(app);
 } else {
-	require('./server.prod')(app);
+	// Use prebuilt build in production ¯\_(ツ)_/¯
+	prodInit(app);
 }
 
-const server = createServer(app);
-
-server.listen(PORT, () => console.log('Server listening on port', PORT));
+app.listen(PORT, () => console.log('Server listening on port', PORT));

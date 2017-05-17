@@ -3,10 +3,6 @@
 	padding: 0;
 }
 
-button {
-	cursor: pointer;
-}
-
 html, body {
 	background: #EEE;
 	color: #444;
@@ -14,6 +10,14 @@ html, body {
 	font-size: 14px;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+
+button {
+	cursor: pointer;
+}
+
+input:focus, button:focus {
+	outline: none;
 }
 
 .todo {
@@ -27,7 +31,6 @@ html, body {
 
 form > input, form > button {
 	height: 3.5rem;
-	outline: none;
 	border: none;
 }
 
@@ -96,7 +99,6 @@ form > button {
 .todo__list-item > button {
 	background-color: rgba(245, 20, 30, .7);
 	box-shadow: 3px 3px 6px #ccc;
-	outline: none;
 	border: none;
 	color: #fff;
 	border-radius: 100%;
