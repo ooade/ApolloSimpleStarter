@@ -13,19 +13,17 @@ class TodoForm extends React.Component {
 	onFormSubmit(e) {
 		e.preventDefault();
 
-		// Update the state
-		this.props.addTodo(this.state.text);
-
-		this.setState({ text: '' });
-
 		// Update DB
-		this.props.mutate({
-			variables: {
-				text: this.state.text
-			},
-			// refetch todoList to get our mongo id attached
-			refetchQueries: [{ query: todoListQuery }]
-		});
+		this.props
+			.mutate({
+				variables: {
+					text: this.state.text
+				}
+			})
+			.then(res => {
+				this.props.addTodo(res.data.addTodo);
+				this.setState({ text: '' });
+			});
 	}
 
 	onTodoInput(e) {

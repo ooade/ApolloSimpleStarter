@@ -9,20 +9,18 @@ class Todo extends React.Component {
 
 		this.addTodo = this.addTodo.bind(this);
 		this.removeTodo = this.removeTodo.bind(this);
-		this.state = { todos: [] };
+		this.state = { todos: [], loading: true };
 	}
 
 	componentWillReceiveProps(nextProps) {
 		this.setState({
-			todos: nextProps.data.todos
+			todos: nextProps.data.todos,
+			loading: nextProps.data.loading
 		});
 	}
 
 	addTodo(todo) {
-		const newTodos = [
-			...this.state.todos,
-			{ id: Math.random().toString(16).slice(-5), todo }
-		];
+		const newTodos = [...this.state.todos, Object.assign({}, todo)];
 
 		this.setState({ todos: newTodos });
 	}
@@ -47,18 +45,33 @@ class Todo extends React.Component {
 	}
 
 	render() {
-		const { todos } = this.state;
+		// Todo List
+		const todos = this.state.todos.map(todo => (
+			<TodoItem removeTodo={this.removeTodo} key={todo.id} todo={todo} />
+		));
 
 		return (
 			<div className="todo">
 				<TodoForm addTodo={this.addTodo} />
-				{todos.length === 0 &&
+
+				{this.state.loading &&
+					<div className="todo__list-loader">
+						<img src="http://res.cloudinary.com/stackpie/image/upload/v1495034057/ajax-loader_kutcwo.gif" />
+					</div>}
+
+				{!this.state.loading &&
+					todos.length === 0 &&
 					<div className="todo__list-none"> Todo.length === 0 </div>}
-				<ul className="todo__list">
-					{todos.map(todo => (
-						<TodoItem removeTodo={this.removeTodo} key={todo.id} todo={todo} />
-					))}
-				</ul>
+
+				<CSSTransitionGroup
+					component="ul"
+					className="todo__list"
+					transitionName="todo"
+					transitionEnterTimeout={300}
+					transitionLeaveTimeout={300}
+				>
+					{todos}
+				</CSSTransitionGroup>
 			</div>
 		);
 	}

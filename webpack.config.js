@@ -8,7 +8,12 @@ const ENV = process.env.NODE_ENV || 'development';
 module.exports = {
 	entry: {
 		app: './client/index.js',
-		vendor: ['react', 'react-apollo', 'isomorphic-fetch']
+		vendor: [
+			'react',
+			'react-apollo',
+			'isomorphic-fetch',
+			'react-transition-group'
+		]
 	},
 	output: {
 		path: path.resolve(__dirname, './build'),
@@ -31,7 +36,8 @@ module.exports = {
 	plugins: [
 		new webpack.ProvidePlugin({
 			React: 'react',
-			fetch: 'isomorphic-fetch'
+			fetch: 'isomorphic-fetch',
+			CSSTransitionGroup: 'react-transition-group/CSSTransitionGroup'
 		}),
 		new webpack.optimize.CommonsChunkPlugin({
 			name: 'vendor',

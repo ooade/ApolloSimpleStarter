@@ -43,6 +43,28 @@ form > button {
 	color: #fff;
 }
 
+/* Transitions */
+.todo-enter {
+	opacity: 0.01;
+}
+
+.todo-enter.todo-enter-active {
+	opacity: 1;
+	transition: opacity 300ms ease-in;
+}
+
+.todo-leave {
+	opacity: 1;
+}
+
+.todo-leave.todo-leave-active {
+	opacity: 0.01;
+	transition: opacity 300ms ease-in;
+	background-color: rgba(225, 20, 30, .17);
+}
+
+/* End Transitions */
+
 .todo__list {
 	display: flex;
 	flex-direction: column-reverse;
@@ -50,7 +72,7 @@ form > button {
 	box-sizing: border-box;
 }
 
-.todo__list-none {
+.todo__list-none, .todo__list-loader {
 	text-align: center;
 	padding: 2rem;
 	color: rgba(245, 20, 30, .7);
@@ -61,6 +83,8 @@ form > button {
 	list-style: none;
 	padding: 1.4rem;
 	width: 100%;
+	color: #444;
+	letter-spacing: 0.7px;
 	border-bottom: 1px solid #ddd;
 	box-sizing: border-box;
 }
