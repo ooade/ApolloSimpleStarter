@@ -28,7 +28,7 @@
 - Add or Remove Todo
 
 <p align="center">
-	<img align="center" src="http://i.imgur.com/BSYBn1L.gif" />
+	<img src="http://i.imgur.com/BSYBn1L.gif" />
 </p>
 
 ### Deployment

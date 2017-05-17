@@ -1,27 +1,27 @@
 import { gql, graphql } from 'react-apollo';
 import { todoListQuery } from './Todo';
 
-class TodoForm extends React.PureComponent {
+class TodoForm extends React.Component {
 	constructor(props) {
 		super(props);
 
 		this.onTodoInput = this.onTodoInput.bind(this);
 		this.onFormSubmit = this.onFormSubmit.bind(this);
-		this.state = { todo: '' };
+		this.state = { text: '' };
 	}
 
 	onFormSubmit(e) {
 		e.preventDefault();
 
 		// Update the state
-		this.props.addTodo(this.state.todo);
+		this.props.addTodo(this.state.text);
 
-		this.setState({ todo: '' });
+		this.setState({ text: '' });
 
 		// Update DB
 		this.props.mutate({
 			variables: {
-				todo: this.state.todo
+				text: this.state.text
 			},
 			// refetch todoList to get our mongo id attached
 			refetchQueries: [{ query: todoListQuery }]
@@ -31,13 +31,13 @@ class TodoForm extends React.PureComponent {
 	onTodoInput(e) {
 		e.preventDefault();
 
-		this.setState({ todo: e.target.value });
+		this.setState({ text: e.target.value });
 	}
 
 	render() {
 		return (
 			<form onSubmit={this.onFormSubmit}>
-				<input type="text" value={this.state.todo} onInput={this.onTodoInput} />
+				<input type="text" value={this.state.text} onInput={this.onTodoInput} />
 				<button> Submit </button>
 			</form>
 		);
@@ -45,10 +45,10 @@ class TodoForm extends React.PureComponent {
 }
 
 const addTodoMutation = gql`
-	mutation addTodo($todo: String!) {
-		addTodo(todo: $todo) {
+	mutation addTodo($text: String!) {
+		addTodo(text: $text) {
 			id
-			todo
+			text
 		}
 	}
 `;

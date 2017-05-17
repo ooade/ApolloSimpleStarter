@@ -1,10 +1,9 @@
 import { gql, graphql, compose } from 'react-apollo';
-import withApollo from './withApollo';
 
 import TodoForm from './TodoForm';
 import TodoItem from './TodoItem';
 
-class Todo extends React.PureComponent {
+class Todo extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -69,7 +68,7 @@ export const todoListQuery = gql`
 	query todos {
 		todos {
 			id
-			todo
+			text
 		}
 	}
 `;
@@ -77,7 +76,7 @@ export const todoListQuery = gql`
 const removeTodoMutation = gql`
 	mutation removeTodo($id: ID!) {
 		removeTodo(id: $id) {
-			todo
+			text
 		}
 	}
 `;

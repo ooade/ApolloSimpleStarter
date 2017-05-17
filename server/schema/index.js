@@ -16,7 +16,7 @@ const resolvers = {
 		},
 		removeTodo(root, { id }) {
 			Todo.findByIdAndRemove(id).exec().then(() => {
-				console.log('deleted todo', id);
+				console.log('Todo Deleted:', id);
 			});
 		}
 	}
@@ -25,7 +25,7 @@ const resolvers = {
 const typeDefs = `
 	type Todo {
 		id: ID
-		todo: String
+		text: String
 	}
 
 	type Query {
@@ -33,7 +33,7 @@ const typeDefs = `
 	}
 
 	type Mutation {
-		addTodo(todo: String!): Todo
+		addTodo(text: String!): Todo
 		removeTodo(id: ID!): Todo
 	}
 
