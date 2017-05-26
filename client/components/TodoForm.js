@@ -1,5 +1,4 @@
 import { gql, graphql } from 'react-apollo';
-import { todoListQuery } from './Todo';
 
 class TodoForm extends React.Component {
 	constructor(props) {

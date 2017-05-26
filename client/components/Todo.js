@@ -56,7 +56,7 @@ class Todo extends React.Component {
 
 				{this.state.loading &&
 					<div className="todo__list-loader">
-						<img src="http://res.cloudinary.com/stackpie/image/upload/v1495034057/ajax-loader_kutcwo.gif" />
+						<img src="https://res.cloudinary.com/stackpie/image/upload/v1495034057/ajax-loader_kutcwo.gif" />
 					</div>}
 
 				{!this.state.loading &&
@@ -77,7 +77,7 @@ class Todo extends React.Component {
 	}
 }
 
-export const todoListQuery = gql`
+const todoListQuery = gql`
 	query todos {
 		todos {
 			id
