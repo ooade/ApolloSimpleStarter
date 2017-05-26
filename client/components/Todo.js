@@ -20,7 +20,7 @@ class Todo extends React.Component {
 	}
 
 	addTodo(todo) {
-		const newTodos = [...this.state.todos, Object.assign({}, todo)];
+		const newTodos = [...this.state.todos, todo];
 
 		this.setState({ todos: newTodos });
 	}
