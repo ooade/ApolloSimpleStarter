@@ -1,4 +1,4 @@
-import { gql, graphql, compose } from 'react-apollo';
+import { gql, graphql } from 'react-apollo';
 
 import TodoForm from './TodoForm';
 import TodoItem from './TodoItem';
@@ -94,6 +94,4 @@ const removeTodoMutation = gql`
 	}
 `;
 
-export default compose(graphql(todoListQuery), graphql(removeTodoMutation))(
-	Todo
-);
+export default graphql(todoListQuery)(graphql(removeTodoMutation)(Todo));
