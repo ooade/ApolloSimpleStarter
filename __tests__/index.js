@@ -1,5 +1,5 @@
 import App from '../client/components/App';
-import TodoItem from '../client/components/TodoItem';
+import TodoListItem from '../client/components/TodoListItem';
 
 describe('App', () => {
 	test('renders without crashing', () => {
@@ -15,8 +15,8 @@ describe('Todo', () => {
 			text: 'I am a todo'
 		};
 
-		const todoItem = shallow(<TodoItem todo={todo} />);
+		const todoListItem = render(<TodoListItem todo={todo} />);
 
-		expect(todoItem.text()).toEqual('x ' + todo.text);
+		expect(todoListItem.text()).toEqual(`x ${todo.text}`);
 	});
 });

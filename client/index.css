@@ -47,25 +47,14 @@ form > button {
 }
 
 /* Transitions */
-.todo-enter {
+.todo__list-item-appear {
 	opacity: 0.01;
 }
 
-.todo-enter.todo-enter-active {
+.todo__list-item-appear.todo__list-item-appear-active {
 	opacity: 1;
-	transition: opacity 300ms ease-in;
+	transition: opacity .5s ease-in;
 }
-
-.todo-leave {
-	opacity: 1;
-}
-
-.todo-leave.todo-leave-active {
-	opacity: 0.01;
-	transition: opacity 300ms ease-in;
-	background-color: rgba(225, 20, 30, .17);
-}
-
 /* End Transitions */
 
 .todo__list {
@@ -96,7 +85,7 @@ form > button {
 	border-bottom: none;
 }
 
-.todo__list-item > button {
+.todo__list-item button {
 	background-color: rgba(245, 20, 30, .7);
 	box-shadow: 3px 3px 6px #ccc;
 	border: none;
