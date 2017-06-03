@@ -5,11 +5,11 @@ import {
 	createNetworkInterface
 } from 'react-apollo';
 
-const networkInterface = createNetworkInterface({ uri: '/graphql' });
+// TODO: Create a networkInterface
 
 const client = new ApolloClient({
 	dataIdFromObject: result => result.id || null,
-	networkInterface
+	// networkInterface
 });
 
 // Import our components

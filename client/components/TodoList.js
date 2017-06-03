@@ -30,4 +30,4 @@ export const todoListQuery = gql`
 	}
 `;
 
-export default graphql(todoListQuery)(TodoList);
+export default graphql(/* Add the todListQuery here */)(TodoList);

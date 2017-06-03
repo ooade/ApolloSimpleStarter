@@ -56,13 +56,8 @@ class TodoForm extends React.Component {
 	}
 }
 
-const addTodoMutation = gql`
-	mutation addTodo($text: String!) {
-		addTodo(text: $text) {
-			id
-			text
-		}
-	}
-`;
+// TODO: Create addTodoMutation
+// Check out ./Todo.js if you've forgotten ;)
+// NOTE: Return an id and a text
 
 export default graphql(addTodoMutation)(TodoForm);
