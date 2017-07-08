@@ -1,4 +1,5 @@
 import { gql, graphql } from 'react-apollo';
+import { todoListQuery } from './TodoList';
 
 class TodoForm extends React.Component {
 	constructor(props) {
@@ -17,10 +18,24 @@ class TodoForm extends React.Component {
 			.mutate({
 				variables: {
 					text: this.state.text
+				},
+				optimisticResponse: {
+					addTodo: {
+						__typename: 'Todo',
+						id: Math.random(),
+						text: this.state.text
+					}
+				},
+				update: (store, { data: { addTodo } }) => {
+					// Read the data from our cache for this query
+					const data = store.readQuery({ query: todoListQuery });
+					// Add our Todo from the mutation to the end
+					data.todos.push(addTodo);
+					// Write our data back to the cache.
+					store.writeQuery({ query: todoListQuery, data });
 				}
 			})
 			.then(res => {
-				this.props.addTodo(res.data.addTodo);
 				this.setState({ text: '' });
 			});
 	}
